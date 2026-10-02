@@ -1,0 +1,10 @@
+{% extends "athletes/base.html" %}
+{% block title %}Главная{% endblock %}
+{% block content %}
+<p>Приложение для импорта/экспорта информации о спортсменах в форматах JSON и XML.</p>
+<ul>
+    <li><a href="{% url 'athletes:add_athlete' %}">Добавить спортсмена через форму</a></li>
+    <li><a href="{% url 'athletes:upload_file' %}">Загрузить файл .json / .xml</a></li>
+    <li><a href="{% url 'athletes:list_files' %}">Просмотреть все сохранённые данные</a></li>
+</ul>
+{% endblock %}

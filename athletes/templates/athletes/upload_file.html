@@ -1,0 +1,10 @@
+{% extends "athletes/base.html" %}
+{% block title %}Загрузка файла{% endblock %}
+{% block content %}
+<h2>Загрузить файл с данными</h2>
+<form method="post" enctype="multipart/form-data" novalidate>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Загрузить</button>
+</form>
+{% endblock %}

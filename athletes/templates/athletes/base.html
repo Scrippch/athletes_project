@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Спортсмены{% endblock %}</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 16px;
+        }
+
+        nav a {
+            margin-right: 12px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 6px 10px;
+            text-align: left;
+        }
+
+        th {
+            background: #f4f4f4;
+        }
+
+        .messages {
+            list-style: none;
+            padding: 0;
+        }
+
+        .messages li {
+            padding: 8px 12px;
+            margin: 6px 0;
+            border-radius: 4px;
+        }
+
+        .messages .success {
+            background: #d4edda;
+        }
+
+        .messages .error {
+            background: #f8d7da;
+        }
+
+        .messages .info {
+            background: #d1ecf1;
+        }
+
+        .file-block {
+            margin-bottom: 24px;
+        }
+
+        .file-block h3 {
+            margin-bottom: 4px;
+        }
+
+        .error-text {
+            color: #b00;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Информация о спортсменах</h1>
+        <nav>
+            <a href="{% url 'athletes:index' %}">Главная</a>
+            <a href="{% url 'athletes:add_athlete' %}">Добавить спортсмена</a>
+            <a href="{% url 'athletes:upload_file' %}">Загрузить файл</a>
+            <a href="{% url 'athletes:list_files' %}">Все файлы</a>
+        </nav>
+    </header>
+    <hr>
+    {% if messages %}
+    <ul class="messages">
+        {% for m in messages %}<li class="{{ m.tags }}">{{ m }}</li>{% endfor %}
+    </ul>
+    {% endif %}
+    <main>{% block content %}{% endblock %}</main>
+</body>
+
+</html>

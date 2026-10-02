@@ -1,0 +1,37 @@
+{% extends "athletes/base.html" %}
+{% block title %}Все файлы{% endblock %}
+{% block content %}
+<h2>Сохранённые файлы</h2>
+
+{% if not files %}
+<p>На сервере ещё нет ни одного файла с данными.</p>
+{% else %}
+{% for f in files %}
+<div class="file-block">
+    <h3>{{ f.name }} <small>[{{ f.format }}]</small></h3>
+    {% if f.error %}
+    <p class="error-text">Ошибка чтения: {{ f.error }}</p>
+    {% else %}
+    <table>
+        <tr>
+            <th>ФИО</th>
+            <th>Возраст</th>
+            <th>Вид спорта</th>
+            <th>Страна</th>
+            <th>Достижения</th>
+        </tr>
+        {% for a in f.records %}
+        <tr>
+            <td>{{ a.name }}</td>
+            <td>{{ a.age }}</td>
+            <td>{{ a.sport }}</td>
+            <td>{{ a.country }}</td>
+            <td>{{ a.achievements }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</div>
+{% endfor %}
+{% endif %}
+{% endblock %}
