@@ -125,7 +125,8 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 
+ 
+}
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
-DATA_DIR = MEDIA_ROOT / 'athletes_data'    
-}
+DATA_DIR = MEDIA_ROOT / 'athletes_data'   
